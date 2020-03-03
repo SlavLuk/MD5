@@ -9,6 +9,9 @@
  #define H(x,y,z,)((x) ^ (y) ^ (z))
  #define I(x,y,z)((y) ^ ((x) | (~z)))
 
+// ROTATE_LEFT rotates x left n bits
+#define ROTATE_LEFT(x,n)(((x) << (n)) | ((x) >> (32-(n))))
+
 
 
 	int main(int argc,char *argv[]){
