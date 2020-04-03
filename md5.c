@@ -47,12 +47,53 @@ uint32_t k[] = {
 
 int main(int argc, char *argv[])
 {
+	int choice, input;
+
+	//prompt user for input
+	printf("Please enter 1 to Input some free text\n");
+	printf("Please enter 2 to Input a full path to some file\n");
+	printf("Please enter 3 to Exit the application\n");
+
+	input = scanf("%d", &choice);
+
+	//check user input if not digit terminate the programme
+	if (input == 0)
+	{
+
+		exit(0);
+	}
+
+	while (choice != 3)
+	{
+
+		switch (choice)
+		{
+
+		case 1:
+
+			printf("Choice 1");
+
+			break;
+
+		case 2:
+
+			printf("Choice 1");
+
+			break;
+
+		default:
+
+			printf("Invalid input");
+		}
+	}
 
 	if (argc != 2)
 	{
 		printf("Expected single filename as an argument.\n");
 		return 1;
 	}
+
+	printf("Length is %d", argc);
 
 	FILE *infile = fopen(argv[1], "rb");
 	if (!infile)
