@@ -48,5 +48,20 @@ uint32_t k[] = {
 int main(int argc, char *argv[])
 {
 
-	printf("Hello Worlds");
+	if (argc != 2)
+	{
+		printf("Expected single filename as an argument.\n");
+		return 1;
+	}
+
+	FILE *infile = fopen(argv[1], "rb");
+	if (!infile)
+	{
+		printf("Error: couldn't open file %s.\n", argv[1]);
+		return 1;
+	}
+	else
+	{
+		printf("File path is : %s\n", argv[1]);
+	}
 }
