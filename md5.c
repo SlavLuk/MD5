@@ -71,19 +71,32 @@ int main(int argc, char *argv[])
 
 		case 1:
 
-			printf("Choice 1");
+			printf("Choice 1\n");
 
 			break;
 
 		case 2:
 
-			printf("Choice 1");
+			printf("Choice 2\n");
 
 			break;
 
 		default:
 
 			printf("Invalid input");
+		}
+		//prompt user for input
+		printf("Please enter 1 to Input some free text\n");
+		printf("Please enter 2 to Input a full path to some file\n");
+		printf("Please enter 3 to Exit the application\n");
+
+		input = scanf("%d", &choice);
+
+		//check user input if not digit terminate the programme
+		if (input == 0)
+		{
+
+			exit(0);
 		}
 	}
 
