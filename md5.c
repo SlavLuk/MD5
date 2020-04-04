@@ -50,21 +50,11 @@ int main(int argc, char *argv[])
 
 	scanf("%s", argv[0]);
 
-	getchar();
-
-	// if (argc > 2)
-	// {
-	// 	printf("Expected single filename as an argument.\n");
-	// 	return 1;
-	// }
-
-	printf("Arg Number is : %d Name is %s\n", argc, argv[0]);
-
 	FILE *infile = fopen(argv[0], "r");
 
 	if (infile == NULL)
 	{
-		printf("Error: couldn't open file %s.\n", argv[1]);
+		printf("Error: couldn't open file %s.\n", argv[0]);
 		return 1;
 	}
 
