@@ -48,6 +48,10 @@ uint32_t k[] = {
 int main(int argc, char *argv[])
 {
 	int choice, input;
+	char *msg, *str;
+	size_t MAX_SIZE = 1054;
+
+	str = (char *)malloc(MAX_SIZE * sizeof(char));
 
 	//prompt user for input
 	printf("Please enter 1 to Input some free text\n");
@@ -70,8 +74,11 @@ int main(int argc, char *argv[])
 		{
 
 		case 1:
+			printf("Enter some text : ");
 
-			printf("Choice 1\n");
+			scanf(" %[^\n]s", str);
+
+			printf("%s\n", str);
 
 			break;
 
@@ -83,7 +90,7 @@ int main(int argc, char *argv[])
 
 		default:
 
-			printf("Invalid input");
+			printf("Invalid input\n");
 		}
 		//prompt user for input
 		printf("Please enter 1 to Input some free text\n");
