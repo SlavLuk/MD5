@@ -13,11 +13,8 @@
 // ROTATE_LEFT rotates x left n bits
 #define ROTATE_LEFT(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
 
-// Initial hash values
-uint32_t h0 = 0x67452301;
-uint32_t h1 = 0xefcdab89;
-uint32_t h2 = 0x98badcfe;
-uint32_t h3 = 0x10325476;
+// These vars will contain the hash
+uint32_t h0, h1, h2, h3;
 
 // r specifies the per-round shift amounts
 uint32_t r[] = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
@@ -44,6 +41,8 @@ uint32_t k[] = {
 	0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
 	0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
+
+void md5(uint8_t *msg, size_t len);
 
 int main(int argc, char *argv[])
 {
@@ -144,4 +143,26 @@ int main(int argc, char *argv[])
 			exit(0);
 		}
 	}
+}
+
+void md5(uint8_t *init_msg, size_t len)
+{
+	// Initial hash values
+	h0 = 0x67452301;
+	h1 = 0xefcdab89;
+	h2 = 0x98badcfe;
+	h3 = 0x10325476;
+
+	// Message (to prepare)
+	uint8_t *msg = NULL;
+	// Pre-processing: adding a single 1 bit
+	//append "1" bit to message
+
+	// Pre-processing: padding with zeros
+	//append "0" bit until message length in bit ≡ 448 (mod 512)
+	//append length mod (2 pow 64) to message
+	int new_len;
+	for (new_len = len * 8 + 1; new_len % 512 != 448; new_len++)
+		;
+	new_len /= 8;
 }
