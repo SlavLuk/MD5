@@ -1,14 +1,21 @@
+
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+/*
+Name :Vyacheslav Lukyanov
+id : G00339839
+Program Description : MD5 message-digest algorithm
+
+
+adopted from https://en.wikipedia.org/wiki/MD5
+
+*/
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-
-// Macros functions
-//Section 3.4 Step 4 process message in 16- word blocks
-#define F(x, y, z) (((x) & (y)) | ((~x) & (z)))
-#define G(x, y, z) (((x) & (z)) | ((y) & (~z)))
-#define H(x, y, z) ((x) ^ (y) ^ (z))
-#define I(x, y, z) ((y) ^ ((x) | (~z)))
 
 // ROTATE_LEFT rotates x left n bits
 #define ROTATE_LEFT(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
@@ -66,12 +73,9 @@ int main(int argc, char *argv[])
 	{
 		//read file by line
 		getline(&msg, &size, infile);
-		printf("%s\n", msg);
 	}
 
 	size_t len = strlen(msg);
-
-	printf("Str len %d\n", len);
 
 	free(msg);
 
