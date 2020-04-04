@@ -49,19 +49,22 @@ int main(int argc, char *argv[])
 	printf("Enter a file name:\n");
 
 	scanf("%s", argv[0]);
-
+	//open file
 	FILE *infile = fopen(argv[0], "r");
-
+	//exit the app if file is null
 	if (infile == NULL)
 	{
 		printf("Error: couldn't open file %s.\n", argv[0]);
 		return 1;
 	}
 
-	printf("Reading file...\n");
+	char *msg = NULL;
+	size_t len = 0;
+	//read file by line
+	getline(&msg, &len, infile);
 
-	printf("The app is closed\n");
 
+	//close file
 	if (infile != NULL)
 	{
 		fclose(infile);
