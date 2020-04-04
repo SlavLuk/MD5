@@ -46,102 +46,35 @@ void md5(uint8_t *msg, size_t len);
 
 int main(int argc, char *argv[])
 {
-	//declare variables
-	int choice, input;
-	char *msg, *str;
-	char *file;
-	size_t MAX_SIZE = 512;
-	FILE *infile;
+	printf("Enter a file name:\n");
 
-	//allocate memory for file name
-	file = (char *)malloc(64);
-	//allocate memory for string
-	str = (char *)malloc(MAX_SIZE);
-	//allocate memory for string
-	msg = (char *)malloc(MAX_SIZE * 2);
-	//	msg = (char *)malloc(2 ^ 64);
-	//prompt user for input
-	printf("Please enter 1 to Input some free text\n");
-	printf("Please enter 2 to Input a full path to some file\n");
-	printf("Please enter 3 to Exit the application\n");
+	scanf("%s", argv[0]);
 
-	input = scanf("%d", &choice);
+	getchar();
 
-	//check user input if not digit terminate the programme
-	if (input == 0)
+	// if (argc > 2)
+	// {
+	// 	printf("Expected single filename as an argument.\n");
+	// 	return 1;
+	// }
+
+	printf("Arg Number is : %d Name is %s\n", argc, argv[0]);
+
+	FILE *infile = fopen(argv[0], "r");
+
+	if (infile == NULL)
 	{
-
-		exit(0);
+		printf("Error: couldn't open file %s.\n", argv[1]);
+		return 1;
 	}
 
-	while (choice != 3)
+	printf("Reading file...\n");
+
+	printf("The app is closed\n");
+
+	if (infile != NULL)
 	{
-
-		switch (choice)
-		{
-
-		case 1:
-			//get input from user
-			printf("Enter some text : ");
-
-			scanf(" %[^\n]s", str);
-
-			printf("%s\n", str);
-
-			//free allocated memory from leak
-			free(str);
-
-			break;
-
-		case 2:
-
-			printf("Enter a file name : ");
-			scanf(" %s", file);
-
-			infile = fopen(file, "r");
-			if (!infile)
-			{
-				printf("Error: couldn't open file %s.\n\n", file);
-			}
-			else
-			{
-				fscanf(infile, "%s", msg);
-
-				printf("%s\n", msg);
-			}
-			//close file
-			if (infile != NULL)
-			{
-
-				fclose(infile);
-			}
-
-			//free allocated memory from leak
-			free(msg);
-			free(file);
-
-			break;
-
-		case 3:
-			exit(0);
-
-		default:
-
-			printf("Invalid input\n");
-		}
-		//prompt user for input
-		printf("Please enter 1 to Input some free text\n");
-		printf("Please enter 2 to Input a full path to some file\n");
-		printf("Please enter 3 to Exit the application\n");
-
-		input = scanf("%d", &choice);
-
-		//check user input if not digit terminate the programme
-		if (input == 0)
-		{
-
-			exit(0);
-		}
+		fclose(infile);
 	}
 }
 
