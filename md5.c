@@ -49,9 +49,13 @@ int main(int argc, char *argv[])
 {
 	int choice, input;
 	char *msg, *str;
-	size_t MAX_SIZE = 1054;
+	char *file;
+	size_t MAX_SIZE = 512;
+	FILE *infile;
+	//
+	file = (char *)malloc(64);
 
-	str = (char *)malloc(MAX_SIZE * sizeof(char));
+	str = (char *)malloc(MAX_SIZE);
 
 	//prompt user for input
 	printf("Please enter 1 to Input some free text\n");
@@ -80,13 +84,37 @@ int main(int argc, char *argv[])
 
 			printf("%s\n", str);
 
+			free(str);
+
 			break;
 
 		case 2:
 
-			printf("Choice 2\n");
+			printf("Enter a file name : ");
+			scanf(" %s", file);
+
+			infile = fopen(file, "r");
+			if (!infile)
+			{
+				printf("Error: couldn't open file %s.\n\n", file);
+			}
+			else
+			{
+				printf("File path is : %s\n", file);
+			}
+
+			if (infile != NULL)
+			{
+
+				fclose(infile);
+			}
+
+			free(file);
 
 			break;
+
+		case 3:
+			exit(0);
 
 		default:
 
@@ -105,24 +133,5 @@ int main(int argc, char *argv[])
 
 			exit(0);
 		}
-	}
-
-	if (argc != 2)
-	{
-		printf("Expected single filename as an argument.\n");
-		return 1;
-	}
-
-	printf("Length is %d", argc);
-
-	FILE *infile = fopen(argv[1], "rb");
-	if (!infile)
-	{
-		printf("Error: couldn't open file %s.\n", argv[1]);
-		return 1;
-	}
-	else
-	{
-		printf("File path is : %s\n", argv[1]);
 	}
 }
