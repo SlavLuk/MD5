@@ -59,10 +59,21 @@ int main(int argc, char *argv[])
 	}
 
 	char *msg = NULL;
-	size_t len = 0;
-	//read file by line
-	getline(&msg, &len, infile);
+	size_t size = 0;
 
+	//iterate until end of file
+	while (!feof(infile))
+	{
+		//read file by line
+		getline(&msg, &size, infile);
+		printf("%s\n", msg);
+	}
+
+	size_t len = strlen(msg);
+
+	printf("Str len %d\n", len);
+
+	free(msg);
 
 	//close file
 	if (infile != NULL)
