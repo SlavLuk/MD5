@@ -47,16 +47,20 @@ uint32_t k[] = {
 
 int main(int argc, char *argv[])
 {
+	//declare variables
 	int choice, input;
 	char *msg, *str;
 	char *file;
 	size_t MAX_SIZE = 512;
 	FILE *infile;
-	//
+
+	//allocate memory for file name
 	file = (char *)malloc(64);
-
+	//allocate memory for string
 	str = (char *)malloc(MAX_SIZE);
-
+	//allocate memory for string
+	msg = (char *)malloc(MAX_SIZE * 2);
+	//	msg = (char *)malloc(2 ^ 64);
 	//prompt user for input
 	printf("Please enter 1 to Input some free text\n");
 	printf("Please enter 2 to Input a full path to some file\n");
@@ -78,12 +82,14 @@ int main(int argc, char *argv[])
 		{
 
 		case 1:
+			//get input from user
 			printf("Enter some text : ");
 
 			scanf(" %[^\n]s", str);
 
 			printf("%s\n", str);
 
+			//free allocated memory from leak
 			free(str);
 
 			break;
@@ -100,15 +106,19 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
-				printf("File path is : %s\n", file);
-			}
+				fscanf(infile, "%s", msg);
 
+				printf("%s\n", msg);
+			}
+			//close file
 			if (infile != NULL)
 			{
 
 				fclose(infile);
 			}
 
+			//free allocated memory from leak
+			free(msg);
 			free(file);
 
 			break;
