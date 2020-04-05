@@ -43,14 +43,44 @@ int main(int argc, char *argv[])
 	char *msg = NULL;
 	size_t size = 0;
 
+	fseek(infile, 0, SEEK_END);
+	int l = ftell(infile);
+
+	rewind(infile);
 	//iterate until end of file
-	while (!feof(infile))
+	if (l > 0)
 	{
-		//read file by line
-		getline(&msg, &size, infile);
+		while (!feof(infile))
+		{
+			//read file by line
+			getline(&msg, &size, infile);
+		}
+	}
+	else
+	{
+		msg = "";
 	}
 
 	size_t len = strlen(msg);
+
+	md5(msg, len);
+
+	//var char digest[16] := h0 append h1 append h2 append h3 //(Output is in little-endian)
+	uint8_t *p;
+
+	// display result
+
+	p = (uint8_t *)&h0;
+	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], h0);
+
+	p = (uint8_t *)&h1;
+	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], h1);
+
+	p = (uint8_t *)&h2;
+	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], h2);
+
+	p = (uint8_t *)&h3;
+	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], h3);
 
 	free(msg);
 
@@ -59,6 +89,8 @@ int main(int argc, char *argv[])
 	{
 		fclose(infile);
 	}
+
+	return 0;
 }
 
 void md5(uint8_t *init_msg, size_t len)
@@ -164,7 +196,7 @@ void md5(uint8_t *init_msg, size_t len)
 			uint32_t temp = d;
 			d = c;
 			c = b;
-			b = b + LEFTROTATE((a + f + k[i] + w[g]), r[i]);
+			b = b + ROTATE_LEFT((a + f + k[i] + w[g]), r[i]);
 			a = temp;
 		}
 
@@ -175,4 +207,7 @@ void md5(uint8_t *init_msg, size_t len)
 		h2 += c;
 		h3 += d;
 	}
+
+	//cleanup
+	free(msg);
 }
