@@ -104,8 +104,6 @@ void md5(uint8_t *init_msg, size_t len)
 	// Pre-processing: padding with zeros
 	//append "0" bit until message length in bit ≡ 448 (mod 512)
 	//append length mod (2 pow 64) to message
-	int new_len;
-	for (new_len = len * 8 + 1; new_len % 512 != 448; new_len++)
-		;
-	new_len /= 8;
+
+	int new_len = ((((initial_len + 8) / 64) + 1) * 64) - 8;
 }
