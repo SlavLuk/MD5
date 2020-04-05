@@ -112,8 +112,8 @@ void md5(uint8_t *init_msg, size_t len)
 	msg = calloc(new_len + 64, 1);
 	//copy original msg into msg with zeros
 	memcpy(msg, init_msg, len);
-	// write the "1" bit
-	msg[len] = 128;
+	// append the "1" bit; most significant bit is "first"
+	msg[len] = 0x80;
 	// len in bits
 	uint32_t bits_len = 8 * len;
 
@@ -160,6 +160,19 @@ void md5(uint8_t *init_msg, size_t len)
 				f = c ^ (b | (~d));
 				g = (7 * i) % 16;
 			}
+
+			uint32_t temp = d;
+			d = c;
+			c = b;
+			b = b + LEFTROTATE((a + f + k[i] + w[g]), r[i]);
+			a = temp;
 		}
+
+		// Add this chunk's hash to result so far:
+
+		h0 += a;
+		h1 += b;
+		h2 += c;
+		h3 += d;
 	}
 }
