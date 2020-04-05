@@ -105,5 +105,12 @@ void md5(uint8_t *init_msg, size_t len)
 	//append "0" bit until message length in bit ≡ 448 (mod 512)
 	//append length mod (2 pow 64) to message
 
-	int new_len = ((((initial_len + 8) / 64) + 1) * 64) - 8;
+	int new_len = ((((len + 8) / 64) + 1) * 64) - 8;
+	// also appends "0" bits
+	//we alloc also 64 extra bytes
+	msg = calloc(new_len + 64, 1);
+	//copy original msg into msg with zeros
+	memcpy(msg, init_msg, len);
+	// write the "1" bit
+	msg[initial_len] = 128;
 }
