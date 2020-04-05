@@ -132,5 +132,34 @@ void md5(uint8_t *init_msg, size_t len)
 		uint32_t b = h1;
 		uint32_t c = h2;
 		uint32_t d = h3;
+
+		//Main loop
+		uint32_t i;
+		//operations on basic MD5 functions.
+		for (i = 0; i < 64; i++)
+		{
+			uint32_t f, g;
+
+			if (i < 16)
+			{
+				f = (b & c) | ((~b) & d);
+				g = i;
+			}
+			else if (i < 32)
+			{
+				f = (d & b) | ((~d) & c);
+				g = (5 * i + 1) % 16;
+			}
+			else if (i < 48)
+			{
+				f = b ^ c ^ d;
+				g = (3 * i + 5) % 16;
+			}
+			else
+			{
+				f = c ^ (b | (~d));
+				g = (7 * i) % 16;
+			}
+		}
 	}
 }
