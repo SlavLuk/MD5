@@ -27,6 +27,7 @@ void md5(uint8_t *msg, size_t len);
 
 int main(int argc, char *argv[])
 {
+
 	printf("Enter a file name:\n");
 
 	scanf("%s", argv[0]);
@@ -112,5 +113,24 @@ void md5(uint8_t *init_msg, size_t len)
 	//copy original msg into msg with zeros
 	memcpy(msg, init_msg, len);
 	// write the "1" bit
-	msg[initial_len] = 128;
+	msg[len] = 128;
+	// len in bits
+	uint32_t bits_len = 8 * len;
+
+	memcpy(msg + new_len, &bits_len, 4);
+
+	// Process the message in successive 512-bit chunks:
+	//for each 512-bit chunk of message
+	int offset;
+	for (offset = 0; offset < new_len; offset += (512 / 8))
+	{
+		// break chunk into sixteen 32-bit words w[j], 0 ≤ j ≤ 15
+		uint32_t *w = (uint32_t *)(msg + offset);
+
+		// Initialize hash value for this chunk
+		uint32_t a = h0;
+		uint32_t b = h1;
+		uint32_t c = h2;
+		uint32_t d = h3;
+	}
 }
