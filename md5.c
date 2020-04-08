@@ -16,7 +16,6 @@ adopted from https://en.wikipedia.org/wiki/MD5
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 // ROTATE_LEFT rotates x left n bits
 #define ROTATE_LEFT(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
@@ -41,14 +40,15 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	char *text = NULL;
-	size_t size = 0;
+	char *text;
 	//scan to the end of file
 	fseek(infile, 0, SEEK_END);
 	//give back the file length
 	int file_len = ftell(infile);
+
 	//allocate memory required
-	text = (char *)malloc(file_len * sizeof(char));
+	text = (char *)malloc(file_len);
+
 	//bring pointer back to the beginning
 	rewind(infile);
 
@@ -56,8 +56,13 @@ int main(int argc, char *argv[])
 	if (file_len > 0)
 	{
 		//read file at once
-		fread(text, sizeof(char), file_len, infile);
-		text[file_len] = '\0';
+		int count = fread(text, sizeof(char), file_len, infile);
+
+		//close file
+		if (infile != NULL)
+		{
+			fclose(infile);
+		}
 	}
 	else
 	{
@@ -65,6 +70,8 @@ int main(int argc, char *argv[])
 	}
 
 	md5(text, file_len);
+
+	free(text);
 
 	//var char digest[16] := h0 append h1 append h2 append h3 //(Output is in little-endian)
 	uint8_t *p;
@@ -82,14 +89,6 @@ int main(int argc, char *argv[])
 
 	p = (uint8_t *)&h3;
 	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], h3);
-
-	free(text);
-
-	//close file
-	if (infile != NULL)
-	{
-		fclose(infile);
-	}
 
 	return 0;
 }
