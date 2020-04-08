@@ -16,5 +16,9 @@
 
 ## Introduction
 
+# MD5 (MD5 message-digest algorithm)
+MD5 processes a variable-length message (file as input) into a fixed-length output of 128 bits.
+This MD5 was written in C as part of my studies in GMIT in the Theory of Algorithms module.
+
 
 
