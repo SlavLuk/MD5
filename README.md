@@ -1,4 +1,4 @@
-<img src="https://github.com/SlavLuk/MD5/blob/master/md5.png"></img>
+<img src="./MD5.png"></img>
 
 # Theory of Algorithms Project
 
