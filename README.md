@@ -35,5 +35,7 @@ This command will compile md5.c file into and executable (.exe)
 To execute the programme :
 >type ./md5 and enter in a file name you would like to hash and it will return a result
 
-
+The output after the program has run should be a series of characters
+an example input and output can be seen below
+><img src="./example.png">
 
