@@ -28,7 +28,7 @@ void md5(uint8_t *msg, size_t len);
 int main(int argc, char *argv[])
 {
 
-	printf("Enter a file name:\n");
+	printf("Please enter a file name:\n");
 
 	scanf("%s", argv[0]);
 	//open file
