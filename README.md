@@ -37,5 +37,5 @@ To execute the programme :
 
 The output after the program has run should be a series of characters
 an example input and output can be seen below
-><img src="./example.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/example.PNG">
 
