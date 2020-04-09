@@ -37,27 +37,31 @@ To execute the programme :
 
 The output after the program has run should be a series of characters
 an example input and output can be seen below
-><img src="https://github.com/SlavLuk/MD5/blob/master/example.PNG">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/example.PNG">
 
 ## Project Testing
 
 To make sure that the program was up to standard it was tested using two 
 different md5 programs. One was an online <a href="http://onlinemd5.com">md5 converter</a> and the second was a 
-terminal converter called open ssl. On both occasions the tests passed. 
+terminal converter called open ssl. On both occasions the tests passed.
+ 
 1.Empty file
+
 An open ssl example can be seen below which hashes empty file
-><img src="https://github.com/SlavLuk/MD5/blob/master/empty.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/empty.png">
 Online md5 converter hashes the same empty file
-><img src="https://github.com/SlavLuk/MD5/blob/master/online.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/online.png">
 And md5 from my windows machine the same empty file
-><img src="https://github.com/SlavLuk/MD5/blob/master/mine.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/mine.png">
+
 2.Large file(War and Peace by graf Leo Tolstoy)
+
 OpenSSL hashes large file
-><img src="https://github.com/SlavLuk/MD5/blob/master/warssl.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/warssl.png">
 On line MD5 checksum
-><img src="https://github.com/SlavLuk/MD5/blob/master/warline.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/warline.png">
 Hashed large file from my windows 10
-><img src="https://github.com/SlavLuk/MD5/blob/master/warmine.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/warmine.png">
 
 
 
