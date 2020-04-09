@@ -97,6 +97,13 @@ on single characters.
 ## Conclusion
 The algorithm works as intended but has difficulty with how windows processes new lines.
 ## References
+ - <a href="https://tools.ietf.org/pdf/rfc1321.pdf">RFC 1321 MD5 Message-Digest Algorithm</a>
+ - <a href="https://en.wikipedia.org/wiki/MD5">MD5 Pseudocode from Wikipedia</a>
+ - <a href="https://en.cppreference.com/w/c/language">C - Programming Language</a>
+ - <a href="https://stackoverflow.com/questions/1552749/difference-between-cr-lf-lf-and-cr-line-break-types">Difference between CR LF, LF and CR</a>
+ - <a href="https://en.wikipedia.org/wiki/Newline">New line in different OS</a>
+ - <a href="https://sourceforge.net/projects/mingw/">A native Windows port of the GNU Compiler Collection</a>
+
 
 
 
