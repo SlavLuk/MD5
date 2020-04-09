@@ -81,7 +81,9 @@ on single characters.
 A DOS/Windows text file can be converted to Unix format by simply removing all ASCII LF
 characters with:
 >$ tr -d '\n' < inputfile > outputfile
+
 The file command can identify the type of line endings:
+
 >$ file myfile.txt
 >myfile.txt: ASCII English text, with CRLF line terminators
 
