@@ -63,6 +63,27 @@ On line MD5 checksum
 Hashed large file from my windows 10
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/warmine.png">
 
+## Problems Encountered
+
+### Newline character '\n'
+
+During development and testing I encountered an error when running the algorithm on Windows devices.
+When I looked further into the error specific to the OS, I found that files with a newline
+control character caused the hash to differ from the hash online and Linux.
+
+To denote a single line break, Unix programs use line feed, whose hexadecimal value in ASCII is 0a, 
+while most programs common to MS-DOS and Microsoft Windows
+use carriage return+line feed, whose hexadecimal value in ASCII is 0d 0a.
+
+To overcome this problem i pre-prosessed text file.The tr command is available on 
+virtually every Unix-like system and can be used to perform arbitrary replacement operations 
+on single characters.
+A DOS/Windows text file can be converted to Unix format by simply removing all ASCII LF
+characters with:
+>$ tr -d '\n' < inputfile > outputfile
+The file command can identify the type of line endings:
+>$ file myfile.txt
+>myfile.txt: ASCII English text, with CRLF line terminators
 
 
 
