@@ -84,9 +84,11 @@ characters with:
 
 The file command can identify the type of line endings:
 
->$ file myfile.txt
+```sh
+    $ file myfile.txt
+      myfile.txt: ASCII English text, with CRLF line terminators
+```
 
->myfile.txt: ASCII English text, with CRLF line terminators
 
 
 
