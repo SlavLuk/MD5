@@ -16,6 +16,7 @@ adopted from https://en.wikipedia.org/wiki/MD5
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include "help.h"
 
 // ROTATE_LEFT rotates x left n bits
 #define ROTATE_LEFT(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
@@ -27,6 +28,7 @@ void md5(uint8_t *msg, size_t len);
 
 int main(int argc, char *argv[])
 {
+	say();
 
 	printf("Please enter a file name:\n");
 
@@ -97,10 +99,26 @@ void md5(uint8_t *init_msg, size_t len)
 {
 
 	// r specifies the per-round shift amounts
-	uint32_t r[] = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
-					5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
-					4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
-					6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21};
+	uint32_t r[] = {
+		7, 12, 17, 22,
+		7, 12, 17, 22,
+		7, 12, 17, 22,
+		7, 12, 17, 22,
+
+		5, 9, 14, 20,
+		5, 9, 14, 20,
+		5, 9, 14, 20,
+		5, 9, 14, 20,
+
+		4, 11, 16, 23,
+		4, 11, 16, 23,
+		4, 11, 16, 23,
+		4, 11, 16, 23,
+
+		6, 10, 15, 21,
+		6, 10, 15, 21,
+		6, 10, 15, 21,
+		6, 10, 15, 21};
 
 	// Initial hash values
 	h0 = 0x67452301;
@@ -108,7 +126,7 @@ void md5(uint8_t *init_msg, size_t len)
 	h2 = 0x98badcfe;
 	h3 = 0x10325476;
 
-	// Message (to prepare)
+	// Message to prepare
 	uint8_t *msg = NULL;
 
 	// Use binary integer part of the sines of integers (in radians) as constants
