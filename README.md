@@ -69,9 +69,9 @@ An open ssl example can be seen below which hashes empty file
 OpenSSL hashes large file
 
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/warssl.png">
->On line MD5 checksum
+ On line MD5 checksum
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/warline.png">
->Hashed large file from my windows 10
+ Hashed large file from my windows 10
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/warmine.png">
 
 ## Problems Encountered
