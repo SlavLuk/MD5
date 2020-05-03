@@ -18,6 +18,7 @@ adopted from https://en.wikipedia.org/wiki/MD5
 #include <stdlib.h>
 #include <string.h>
 #include "getopt.h"
+#include "help.h"
 
 // ROTATE_LEFT rotates x left n bits
 #define ROTATE_LEFT(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
@@ -31,8 +32,11 @@ int main(int argc, char *argv[])
 {
 
 	int opt;
-	int aflag = 0;
-	int bflag = 0;
+	int hflag = 0;
+	int eflag = 0;
+	int lflag = 0;
+	int pflag = 0;
+	int cflag = 0;
 	char *cvalue = NULL;
 	int index;
 	int c;
@@ -42,27 +46,32 @@ int main(int argc, char *argv[])
 	// put ':' in the starting of the
 	// string so that program can
 	//distinguish between '?' and ':'
-	while ((c = getopt(argc, argv, "abc:")) != -1)
+	while ((c = getopt(argc, argv, "helpf")) != -1)
 	{
 		switch (c)
 		{
-		case 'a':
-			aflag = 1;
+		case 'h':
+		case 'e':
+		case 'l':
+		case 'p':
+			hflag = 1;
+			eflag = 1;
+			lflag = 1;
+			pflag = 1;
 			break;
-		case 'b':
-			bflag = 1;
-			break;
-		case 'c':
-			cvalue = optarg;
+
+		case 'f':
+			//cvalue = optarg;
+			cflag = 1;
 			break;
 		case '?':
 			if (optopt == 'c')
 				fprintf(stderr, "Option -%c requires an argument.\n", optopt);
 			else if (isprint(optopt))
-				fprintf(stderr, "Unknown option `-%c'.\n", optopt);
+				fprintf(stderr, "Unknown option '-%c'.\n", optopt);
 			else
 				fprintf(stderr,
-						"Unknown option character `\\x%x'.\n",
+						"Unknown option character '\\x%x'.\n",
 						optopt);
 			return 1;
 		default:
@@ -70,10 +79,22 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	if (hflag == 1 && eflag == 1 && lflag == 1 && pflag == 1)
+	{
+
+		help();
+	}
+	else if (cflag == 1)
+	{
+
+		printf("File location is : %s", "./test.txt");
+		exit(0);
+	}
+
 	// optind is for the extra arguments
 	// which are not parsed
-	printf("aflag = %d, bflag = %d, cvalue = %s\n",
-		   aflag, bflag, cvalue);
+	printf("hflag = %d, eflag = %d,lflag = %d, pflag = %d, cvalue = %s\n",
+		   hflag, eflag, lflag, pflag, cvalue);
 
 	for (index = optind; index < argc; index++)
 		printf("Non-option argument %s\n", argv[index]);
