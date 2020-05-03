@@ -59,9 +59,9 @@ terminal converter called open ssl. On both occasions the tests passed.
 An open ssl example can be seen below which hashes empty file
 
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/empty.png">
->Online md5 converter hashes the same empty file
+ Online md5 converter hashes the same empty file
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/online.png">
->And md5 from my windows machine the same empty file
+ And md5 from my windows machine the same empty file
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/mine.png">
 
  - Large file(War and Peace by graf Leo Tolstoy)
