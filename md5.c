@@ -6,7 +6,7 @@
 Name :Vyacheslav Lukyanov
 id : G00339839
 Program Description : MD5 message-digest algorithm
-
+version 1.0.0
 
 adopted from https://en.wikipedia.org/wiki/MD5
 
@@ -17,6 +17,7 @@ adopted from https://en.wikipedia.org/wiki/MD5
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include "getopt.h"
 #include "help.h"
 
@@ -31,33 +32,32 @@ void md5(uint8_t *msg, size_t len);
 int main(int argc, char *argv[])
 {
 
+	cwd();
+	if (strcmp(argv[1], "--help") == 0)
+	{
+
+		help();
+	}
 	int opt;
-	int hflag = 0;
-	int eflag = 0;
-	int lflag = 0;
-	int pflag = 0;
+	int help_flag = 0;
+	int test_flag = 0;
+	int cd_flag = 0;
+	int v_flag = 0;
 	int cflag = 0;
-	char *cvalue = NULL;
+	char *fvalue = NULL;
 	int index;
 	int c;
 
 	opterr = 0;
 
-	// put ':' in the starting of the
-	// string so that program can
-	//distinguish between '?' and ':'
-	while ((c = getopt(argc, argv, "helpf")) != -1)
+	while ((c = getopt(argc, argv, "htdvf:")) != -1)
 	{
 		switch (c)
 		{
 		case 'h':
-		case 'e':
-		case 'l':
-		case 'p':
-			hflag = 1;
-			eflag = 1;
-			lflag = 1;
-			pflag = 1;
+
+			help_flag = 1;
+
 			break;
 
 		case 'f':
@@ -78,26 +78,6 @@ int main(int argc, char *argv[])
 			abort();
 		}
 	}
-
-	if (hflag == 1 && eflag == 1 && lflag == 1 && pflag == 1)
-	{
-
-		help();
-	}
-	else if (cflag == 1)
-	{
-
-		printf("File location is : %s", "./test.txt");
-		exit(0);
-	}
-
-	// optind is for the extra arguments
-	// which are not parsed
-	printf("hflag = %d, eflag = %d,lflag = %d, pflag = %d, cvalue = %s\n",
-		   hflag, eflag, lflag, pflag, cvalue);
-
-	for (index = optind; index < argc; index++)
-		printf("Non-option argument %s\n", argv[index]);
 
 	printf("Please enter a file name:\n");
 
