@@ -313,7 +313,8 @@ void md5(uint8_t *init_msg, size_t len)
 
 void test_hashes_md5()
 {
-	char tests[7];
+	// test cases copied from appendix A.5 of RFC 1321
+	char *tests[7];
 	tests[0] = "";
 	tests[1] = "a";
 	tests[2] = "abc";
@@ -322,28 +323,35 @@ void test_hashes_md5()
 	tests[5] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	tests[6] = "12345678901234567890123456789012345678901234567890123456789012345678901234567890";
 
+	// test cases copied from appendix A.5 of RFC 1321
+	char *results[7];
+	results[0] = "d41d8cd98f00b204e9800998ecf8427e";
+	results[1] = "0cc175b9c0f1b6a831c399e269772661";
+	results[2] = "900150983cd24fb0d6963f7d28e17f72";
+	results[3] = "f96b697d7cb7938d525a2f31aaf161d0";
+	results[4] = "c3fcd3d76192e4007dfb496cca67e13b";
+	results[5] = "d174ab98d277d9f5a5611c2c9f419d9f";
+	results[6] = "57edf4a22be3c955ac49da2e2107b67a";
+
 	for (int i = 0; i < 7; i++)
 	{
 
-		md5(tests[i], strlen([i]));
+		char str[256];
+
+		md5(tests[i], strlen(tests[i]));
+
+		uint8_t *p = (uint8_t *)&h0;
+		uint8_t *p1 = (uint8_t *)&h1;
+		uint8_t *p2 = (uint8_t *)&h2;
+		uint8_t *p3 = (uint8_t *)&h3;
+
+		sprintf(str, "%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], p1[0], p1[1], p1[2], p1[3], p2[0], p2[1], p2[2], p2[3], p3[0], p3[1], p3[2], p3[3]);
+
+		// compare results
+		assert(strcmp(str, results[i]) == 0);
+
+		printf("Hashed of %s --> %s\n", tests[i], str);
 	}
-
-	char *text = "";
-	int len = strlen(text);
-
-	uint8_t *p = (uint8_t *)&h0;
-	uint8_t *p1 = (uint8_t *)&h1;
-	uint8_t *p2 = (uint8_t *)&h2;
-	uint8_t *p3 = (uint8_t *)&h3;
-
-	char str[256];
-
-	sprintf(str, "%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], p1[0], p1[1], p1[2], p1[3], p2[0], p2[1], p2[2], p2[3], p3[0], p3[1], p3[2], p3[3]);
-
-	// test cases copied from appendix A.5 of RFC 1321
-	assert(strcmp(str, "d41d8cd98f00b204e9800998ecf8427e") == 0);
-
-	printf("Hashed of %s --> %s\n", text, str);
 
 	exit(0);
 }
