@@ -18,7 +18,7 @@
 void help()
 {
     fprintf(stderr,
-            "\nUsage: md5 [OPTION] <file>\n"
+            "Usage: md5 [OPTION] <file>\n"
             "A procedure for running md5.\n\n"
             "./md5 -f <file>\n\n"
             "Option:\n"

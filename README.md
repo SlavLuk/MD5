@@ -117,4 +117,4 @@ The algorithm works as intended but has difficulty with how windows processes ne
  - <a href="https://en.wikipedia.org/wiki/Newline">New line in different OS</a>
  - <a href="https://sourceforge.net/projects/mingw/">A native Windows port of the GNU Compiler Collection</a>
  - <a href="https://www.codeproject.com/Articles/157001/Full-getopt-Port-for-Unicode-and-Multibyte-Microso">Windows version of getopt() function</a>
- 
+ - <a href="https://stackoverflow.com/questions/298510/how-to-get-the-current-directory-in-a-c-program">Windows current directory</a>

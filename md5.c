@@ -17,7 +17,7 @@ adopted from https://en.wikipedia.org/wiki/MD5
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
+#include <assert.h>
 #include "getopt.h"
 #include "help.h"
 
@@ -28,6 +28,8 @@ adopted from https://en.wikipedia.org/wiki/MD5
 uint32_t h0, h1, h2, h3;
 
 void md5(uint8_t *msg, size_t len);
+
+void test_hashes_md5();
 
 int main(int argc, char *argv[])
 {
@@ -100,6 +102,7 @@ int main(int argc, char *argv[])
 	}
 	if (tflag == 1)
 	{
+		test_hashes_md5();
 	}
 	if (dflag == 1)
 	{
@@ -306,4 +309,41 @@ void md5(uint8_t *init_msg, size_t len)
 
 	//cleanup
 	free(msg);
+}
+
+void test_hashes_md5()
+{
+	char tests[7];
+	tests[0] = "";
+	tests[1] = "a";
+	tests[2] = "abc";
+	tests[3] = "message digest";
+	tests[4] = "abcdefghijklmnopqrstuvwxyz";
+	tests[5] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	tests[6] = "12345678901234567890123456789012345678901234567890123456789012345678901234567890";
+
+	for (int i = 0; i < 7; i++)
+	{
+
+		md5(tests[i], strlen([i]));
+	}
+
+	char *text = "";
+	int len = strlen(text);
+
+	uint8_t *p = (uint8_t *)&h0;
+	uint8_t *p1 = (uint8_t *)&h1;
+	uint8_t *p2 = (uint8_t *)&h2;
+	uint8_t *p3 = (uint8_t *)&h3;
+
+	char str[256];
+
+	sprintf(str, "%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], p1[0], p1[1], p1[2], p1[3], p2[0], p2[1], p2[2], p2[3], p3[0], p3[1], p3[2], p3[3]);
+
+	// test cases copied from appendix A.5 of RFC 1321
+	assert(strcmp(str, "d41d8cd98f00b204e9800998ecf8427e") == 0);
+
+	printf("Hashed of %s --> %s\n", text, str);
+
+	exit(0);
 }
