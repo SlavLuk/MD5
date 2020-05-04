@@ -29,6 +29,8 @@ void help()
             "-v        print version.\n\n"
 
             "<file> may be any file to be hashed.\n");
+
+    exit(0);
 }
 
 // print current working directory
@@ -38,12 +40,16 @@ void cwd()
     char buff[FILENAME_MAX];
     GetCurrentDir(buff, FILENAME_MAX);
     printf("Current working dir: %s\n", buff);
+
+    exit(0);
 }
 
 void version()
 {
 
     printf("version 1.0.0\n");
+
+    exit(0);
 }
 
 #endif

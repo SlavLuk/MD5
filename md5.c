@@ -31,8 +31,12 @@ void md5(uint8_t *msg, size_t len);
 
 int main(int argc, char *argv[])
 {
-
+	//variables declaration
 	int opt;
+	int hflag = 0;
+	int tflag = 0;
+	int dflag = 0;
+	int vflag = 0;
 	char *fvalue = NULL;
 	int c;
 
@@ -44,22 +48,24 @@ int main(int argc, char *argv[])
 		{
 		case 'h':
 
-			help();
+			hflag = 1;
 
 			break;
 
 		case 't':
 
+			tflag = 1;
+
 			break;
 		case 'd':
 
-			cwd();
+			dflag = 1;
 
 			break;
 
 		case 'v':
 
-			version();
+			vflag = 1;
 
 			break;
 
@@ -84,8 +90,25 @@ int main(int argc, char *argv[])
 	for (int i = optind; i < argc; i++)
 	{
 
-		printf("Non-option argument %s\n", argv[i]);
+		printf("\nNon-option argument %s\n", argv[i]);
 		exit(0);
+	}
+
+	if (hflag == 1)
+	{
+		help();
+	}
+	if (tflag == 1)
+	{
+	}
+	if (dflag == 1)
+	{
+
+		cwd();
+	}
+	if (vflag == 1)
+	{
+		version();
 	}
 
 	//open file
