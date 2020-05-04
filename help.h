@@ -29,7 +29,6 @@ void help()
             "-v        print version.\n\n"
 
             "<file> may be any file to be hashed.\n");
-    exit(0);
 }
 
 // print current working directory
@@ -44,7 +43,7 @@ void cwd()
 void version()
 {
 
-    printf(" version 1.0.0");
+    printf("version 1.0.0\n");
 }
 
 #endif

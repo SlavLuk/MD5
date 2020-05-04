@@ -32,40 +32,43 @@ void md5(uint8_t *msg, size_t len);
 int main(int argc, char *argv[])
 {
 
-	cwd();
-	if (strcmp(argv[1], "--help") == 0)
-	{
-
-		help();
-	}
 	int opt;
-	int help_flag = 0;
-	int test_flag = 0;
-	int cd_flag = 0;
-	int v_flag = 0;
-	int cflag = 0;
 	char *fvalue = NULL;
-	int index;
 	int c;
 
 	opterr = 0;
 
 	while ((c = getopt(argc, argv, "htdvf:")) != -1)
-	{
+
 		switch (c)
 		{
 		case 'h':
 
-			help_flag = 1;
+			help();
+
+			break;
+
+		case 't':
+
+			break;
+		case 'd':
+
+			cwd();
+
+			break;
+
+		case 'v':
+
+			version();
 
 			break;
 
 		case 'f':
-			//cvalue = optarg;
-			cflag = 1;
+
+			fvalue = optarg;
 			break;
 		case '?':
-			if (optopt == 'c')
+			if (optopt == 'f')
 				fprintf(stderr, "Option -%c requires an argument.\n", optopt);
 			else if (isprint(optopt))
 				fprintf(stderr, "Unknown option '-%c'.\n", optopt);
@@ -77,17 +80,20 @@ int main(int argc, char *argv[])
 		default:
 			abort();
 		}
+
+	for (int i = optind; i < argc; i++)
+	{
+
+		printf("Non-option argument %s\n", argv[i]);
+		exit(0);
 	}
 
-	printf("Please enter a file name:\n");
-
-	scanf("%s", argv[0]);
 	//open file
-	FILE *infile = fopen(argv[0], "r");
+	FILE *infile = fopen(fvalue, "r");
 	//exit the app if file is null
 	if (infile == NULL)
 	{
-		printf("Error: couldn't open file %s.\n", argv[0]);
+		printf("Error: couldn't open file %s.\n", fvalue);
 		return 1;
 	}
 

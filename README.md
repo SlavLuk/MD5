@@ -39,8 +39,8 @@ This command will compile md5.c file into and executable (.exe)
  - To execute the programme :
 
 ```sh
-    $ ./md5
-      and enter in a file name you would like to hash and it will return a result
+    $ ./md5 -f filename
+      enter in a file name as an argument of -f
 ```
 
 The output after the program has run should be a series of characters
@@ -117,3 +117,4 @@ The algorithm works as intended but has difficulty with how windows processes ne
  - <a href="https://en.wikipedia.org/wiki/Newline">New line in different OS</a>
  - <a href="https://sourceforge.net/projects/mingw/">A native Windows port of the GNU Compiler Collection</a>
  - <a href="https://www.codeproject.com/Articles/157001/Full-getopt-Port-for-Unicode-and-Multibyte-Microso">Windows version of getopt() function</a>
+ 
