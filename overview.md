@@ -69,6 +69,25 @@ This will compile the program and add a ``md5.exe`` executable to the directory.
 ```
  
 ## Test
+
+To make sure that the program was up to standard it was tested using two
+different md5 programs. One was an online <a href="http://onlinemd5.com">md5 converter</a> and the second was a
+terminal converter called ``OpenSSL``. On both occasions the tests passed.
+Please refer to <a href="https://github.com/SlavLuk/MD5/blob/master/README.md">README.md</a> for the full report.
+
+For the project requirement i created test cases based on <a href="https://tools.ietf.org/pdf/rfc1321.pdf">appendix A.5 of RFC 1321</a> document.
+
+ 1. To run test cases enter
+```sh
+    ./md5 -t
+```
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/test.png">
+
+
+
+
+
+
 ## Algorithm
 ## Complexity
 ## References
