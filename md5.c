@@ -345,11 +345,12 @@ void test_hashes_md5()
 		uint8_t *p2 = (uint8_t *)&h2;
 		uint8_t *p3 = (uint8_t *)&h3;
 
+		// format hashed string
 		sprintf(str, "%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3], p1[0], p1[1], p1[2], p1[3], p2[0], p2[1], p2[2], p2[3], p3[0], p3[1], p3[2], p3[3]);
 
 		// compare results
 		assert(strcmp(str, results[i]) == 0);
-
+		// print results if passed
 		printf("Hashed of %s --> %s\n", tests[i], str);
 	}
 
