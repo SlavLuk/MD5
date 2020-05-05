@@ -31,13 +31,12 @@ The only requirement for this program is a C compiler.The given instruction is a
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/confirm.png">
 
 ### Download
-
+There are two ways to download repository 
  1. Clone this reposiory to your machine as a zip file
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/clone.png">
- 2. Copy link to directory
+ 2. Or copy link to directory
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/link.png">
- 3. Open command prompt, type
-
+ - Open command prompt, enter
 ```sh
     git clone https://github.com/SlavLuk/MD5
 ```
@@ -55,6 +54,20 @@ The only requirement for this program is a C compiler.The given instruction is a
 ```	
 This will compile the program and add a ``md5.exe`` executable to the directory.
 
+### Run the program
+
+ 1. In opened terminal enter
+```sh
+    ./md5 -f ./test.txt
+```
+ - ``./md5`` is the executable
+ - ``-f`` is option (required)
+ - ``./test.txt`` is the file name to execute
+ 2. For help menu enter
+```sh
+    ./md5 -h
+```
+ 
 ## Test
 ## Algorithm
 ## Complexity
