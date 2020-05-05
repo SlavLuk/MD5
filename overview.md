@@ -17,18 +17,18 @@ The only requirement for this program is a C compiler.The given instruction is a
  1. Download MinGW for Windows(GCC).
 ><a href="https://sourceforge.net/projects/mingw/">MinGW - Minimalist GNU for Windows Compiler Collection (GCC)</a>
  2. Follow instructions from MinGW installer.
- 3. After installation done, go and copy your path to MinGW\bin directory.
 
+ 3. After installation done, go and copy your path to MinGW\bin directory.
 ```sh
     C:\MinGW\bin
 ```
  4. Go to environment variables.
-><img src="https://github.com/SlavLuk/MD5/blob/master/img/env.PNG">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/env.png">
  5. Select path on system variables, click edit, new and paste into MinGW\bin directory apply and close all windows.
-><img src="https://github.com/SlavLuk/MD5/blob/master/img/path.PNG">
-><img src="https://github.com/SlavLuk/MD5/blob/master/img/new.PNG">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/path.png">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/new.png">
  6. Check GCC compiler version from command line
-><img src="https://github.com/SlavLuk/MD5/blob/master/img/confirm.PNG">
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/confirm.png">
 ## Test
 ## Algorithm
 ## Complexity
