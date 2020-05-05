@@ -29,6 +29,32 @@ The only requirement for this program is a C compiler.The given instruction is a
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/new.png">
  6. Check GCC compiler version from command line
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/confirm.png">
+
+### Download
+
+ 1. Clone this reposiory to your machine as a zip file
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/clone.png">
+ 2. Copy link to directory
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/link.png">
+ 3. Open command prompt, type
+
+```sh
+    git clone https://github.com/SlavLuk/MD5
+```
+### Compile the program
+
+ 1. Start up Visual Studio code IDE
+ 2. In VS code open folder of downloaded repository 
+ 3. Open up terminal by pressing
+```sh
+    Ctrl + '
+```
+ 4. Enter
+```sh
+    gcc -o md5 md5.c
+```	
+This will compile the program and add a ``md5.exe`` executable to the directory.
+
 ## Test
 ## Algorithm
 ## Complexity
