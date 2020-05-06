@@ -90,34 +90,34 @@ a 128-bit "fingerprint" or "message digest" of the input.
 A robust one-way hash function is usually expected to satisfy some requirements, namely collision resistance, preimage resistance, second preimage resistance.
 The MD5 algorithm is intended for digital signature applications, where a large file must be "compressed" in a secure manner before being encrypted with a private (secret) key under a public-key cryptosystem such as RSA.
 MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD5 algorithm is designed to be quite fast on 32-bit machines. This algorithm found by Professor Ronald L. Rivest.
-### The following five steps are performed to compute the message digest of the message.
+### The following six steps are performed to compute the message digest of the message.
  1. Step : Append Padding Bits.
-The message is "padded" (extended) so that its length (in bits) is congruent to 448, modulo 512. This padding is single 1 bit added to the end of the message, 
-followed by as many zeros are required so that the length of bits equals 448 modulo 512.Padding is always performed, even if the length of the message is already congruent to 448, modulo 512.
+>The message is "padded" (extended) so that its length (in bits) is congruent to 448, modulo 512. This padding is single 1 bit added to the end of the message, 
+>followed by as many zeros are required so that the length of bits equals 448 modulo 512.Padding is always performed, even if the length of the message is already congruent to 448, modulo 512.
  2. Step : Append Length.
-A 64-bit representation of the message's length is appended to the result. This stage is to make the message length an exact multiple of 512 bits in length.
+>A 64-bit representation of the message's length is appended to the result. This stage is to make the message length an exact multiple of 512 bits in length.
  3. Step : Divide the message.
-MD5 processes the input string in 512-bit blocks, divided into 16 32-bit sub-blocks. The output of the algorithm is set of four 32-bit blocks, which concatenate to form single 128-bit hash value.
+>MD5 processes the input string in 512-bit blocks, divided into 16 32-bit sub-blocks. The output of the algorithm is set of four 32-bit blocks, which concatenate to form single 128-bit hash value.
  4. Step : Initialize MD Buffer.
-Four 32-bit variable are initialized:
-A = 0x01234567
-B = 0x89ABCDEF
-C = 0xFEBCDA98
-D = 0x76543210
-These are called chaining variables.
+>Four 32-bit variable are initialized:
+>A = 0x01234567
+>B = 0x89ABCDEF
+>C = 0xFEBCDA98
+>D = 0x76543210
+>These are called chaining variables.
  5. Step : Process message.
-The main loop of the algorithm begins and continues for as many 512-bit blocks as are in the message. The four copied into the different variable: a gets A, b gets B, c gets C, and
-d gets D. the main loop has four rounds, all very similar. Each series uses a different operation 16 times. Each operation performs a nonlinear function on three of a, b, c, and d. 
-Then it adds that result to the right a variable number of bits and adds the result to one
-of a, b, c, and d. Finally, the result replaces one of a, b, c, and d.
-There are four nonlinear functions:
-F(X,Y,Z) = (X && Y) || ((~X) && Z)
-G(X,Y,Z) = (X && Z) || (Y && (~Z))
-H(X,YZ) = X ^ Y ^ Z
-I(X,Y,Z) = Y ^ (X || (~Z))
-(|| is OR, && is AND, ^ is XOR, ~ is NOT)
+>The main loop of the algorithm begins and continues for as many 512-bit blocks as are in the message. The four copied into the different variable: a gets A, b gets B, c gets C, and
+>d gets D. the main loop has four rounds, all very similar. Each series uses a different operation 16 times. Each operation performs a nonlinear function on three of a, b, c, and d. 
+>Then it adds that result to the right a variable number of bits and adds the result to one
+>of a, b, c, and d. Finally, the result replaces one of a, b, c, and d.
+>There are four nonlinear functions:
+>F(X,Y,Z) = (X && Y) || ((~X) && Z)
+>G(X,Y,Z) = (X && Z) || (Y && (~Z))
+>H(X,YZ) = X ^ Y ^ Z
+>I(X,Y,Z) = Y ^ (X || (~Z))
+>(|| is OR, && is AND, ^ is XOR, ~ is NOT)
  6. Step : Output.
-The message digest produced as output is A, B, C, D. That is, output begins with low-order byte of A, and end with the high-order byte of D.
+>The message digest produced as output is A, B, C, D. That is, output begins with low-order byte of A, and end with the high-order byte of D.
 
 
 
