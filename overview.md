@@ -100,10 +100,10 @@ MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD
 >MD5 processes the input string in 512-bit blocks, divided into 16 32-bit sub-blocks. The output of the algorithm is set of four 32-bit blocks, which concatenate to form single 128-bit hash value.
  4. Step : Initialize MD Buffer.
 >Four 32-bit variable are initialized:
->A = 0x01234567
->B = 0x89ABCDEF
->C = 0xFEBCDA98
->D = 0x76543210
+ - A = 0x01234567
+ - B = 0x89ABCDEF
+ - C = 0xFEBCDA98
+ - D = 0x76543210
 >These are called chaining variables.
  5. Step : Process message.
 >The main loop of the algorithm begins and continues for as many 512-bit blocks as are in the message. The four copied into the different variable: a gets A, b gets B, c gets C, and
@@ -111,11 +111,11 @@ MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD
 >Then it adds that result to the right a variable number of bits and adds the result to one
 >of a, b, c, and d. Finally, the result replaces one of a, b, c, and d.
 >There are four nonlinear functions:
->F(X,Y,Z) = (X && Y) || ((~X) && Z)
->G(X,Y,Z) = (X && Z) || (Y && (~Z))
->H(X,YZ) = X ^ Y ^ Z
->I(X,Y,Z) = Y ^ (X || (~Z))
->(|| is OR, && is AND, ^ is XOR, ~ is NOT)
+ - F(X,Y,Z) = (X && Y) || ((~X) && Z)
+ - G(X,Y,Z) = (X && Z) || (Y && (~Z))
+ - H(X,YZ) = X ^ Y ^ Z
+ - I(X,Y,Z) = Y ^ (X || (~Z))
+ - (|| is OR, && is AND, ^ is XOR, ~ is NOT)
  6. Step : Output.
 >The message digest produced as output is A, B, C, D. That is, output begins with low-order byte of A, and end with the high-order byte of D.
 
