@@ -142,10 +142,8 @@ int main(int argc, char *argv[])
 		int count = fread(text, sizeof(char), file_len, infile);
 
 		//close file
-		if (infile != NULL)
-		{
-			fclose(infile);
-		}
+
+		fclose(infile);
 	}
 	else
 	{
@@ -154,6 +152,7 @@ int main(int argc, char *argv[])
 
 	md5(text, file_len);
 
+	// free memory from leak
 	free(text);
 
 	//var char digest[16] := h0 append h1 append h2 append h3 //(Output is in little-endian)
@@ -236,16 +235,24 @@ void md5(uint8_t *init_msg, size_t len)
 	// Pre-processing: padding with zeros
 	//append "0" bit until message length in bit ≡ 448 (mod 512)
 	//append length mod (2 pow 64) to message
+	int new_len;
 
-	int new_len = ((((len + 8) / 64) + 1) * 64) - 8;
-	// also appends "0" bits
-	//we alloc also 64 extra bytes
-	msg = calloc(new_len + 64, 1);
+	// if length of message more than in bit ≡ 448 (mod 512) allocate another block to accommodate "0" padding
+	for (new_len = len * 8 + 1; new_len % 512 != 448; new_len++)
+		;
+	// length in bytes
+	new_len /= 8;
+
+	// allocate memory filled with zeros (new_len + 64 bits)
+	msg = calloc(new_len + 8, 1);
+
 	//copy original msg into msg with zeros
 	memcpy(msg, init_msg, len);
+
 	// append the "1" bit; most significant bit is "first"
 	msg[len] = 0x80;
-	// len in bits
+
+	// length in bits
 	uint32_t bits_len = 8 * len;
 
 	memcpy(msg + new_len, &bits_len, 4);

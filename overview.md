@@ -94,6 +94,7 @@ MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD
  1. Step : Append Padding Bits.
 >The message is "padded" (extended) so that its length (in bits) is congruent to 448, modulo 512. This padding is single 1 bit added to the end of the message, 
 >followed by as many zeros are required so that the length of bits equals 448 modulo 512.Padding is always performed, even if the length of the message is already congruent to 448, modulo 512.
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/padding.png">
  2. Step : Append Length.
 >A 64-bit representation of the message's length is appended to the result. This stage is to make the message length an exact multiple of 512 bits in length.
  3. Step : Divide the message.
@@ -118,7 +119,13 @@ MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD
  - (|| is OR, && is AND, ^ is XOR, ~ is NOT)
  6. Step : Output.
 >The message digest produced as output is A, B, C, D. That is, output begins with low-order byte of A, and end with the high-order byte of D.
-
+### Main algorithm in md5.c explained
+ - Create constants according to <a href="https://tools.ietf.org/pdf/rfc1321.pdf">request for comments: 1321.</a>
+ - Read in a full text file.
+ - Multiply by 8 (to bytes) and add 1 to the end.
+ - In the loop check if a new message length is congruent to 448, modulo 512, if it is out of the loop
+otherwise keep going.
+ - 
 
 
 
