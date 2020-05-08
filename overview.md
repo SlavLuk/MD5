@@ -122,10 +122,18 @@ MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD
 >The message digest produced as output is A, B, C, D. That is, output begins with low-order byte of A, and end with the high-order byte of D.
 ### Main algorithm in md5.c explained
  - Create constants according to <a href="https://tools.ietf.org/pdf/rfc1321.pdf">request for comments: 1321.</a>
- - Read in a full text file.
+ - Read in a full text file and save the length.
  - Message length multiply by 8 (to bytes) and add 1 to the end.
  - In the loop check if a new message length is congruent to 448, modulo 512, if it is out of the loop
 otherwise keep going.
+ - Allocate memory and fill up with zeros (calloc function) based on new length.
+ - Copy read message into new allocated memory with zeros.
+ - Append '1' to the end of the message.
+ - Set the last 64 bits to the message length in bits.
+ - Process the message in successive 512-bit chunks.
+ - Break chunk into sixteen 32-bit words.
+ - The rest goes according to this pseudocode
+><img src="https://github.com/SlavLuk/MD5/blob/master/img/main.png">
  
 
 
