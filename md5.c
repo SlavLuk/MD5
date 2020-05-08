@@ -243,8 +243,8 @@ void md5(uint8_t *init_msg, size_t len)
 	// length in bytes
 	new_len /= 8;
 
-	// allocate memory filled with zeros (new_len + 64 bits)
-	msg = calloc(new_len + 8, 1);
+	// allocate memory filled with zeros
+	msg = calloc(new_len, sizeof(int));
 
 	//copy original msg into msg with zeros
 	memcpy(msg, init_msg, len);
@@ -253,9 +253,10 @@ void md5(uint8_t *init_msg, size_t len)
 	msg[len] = 0x80;
 
 	// length in bits
-	uint32_t bits_len = 8 * len;
+	uint64_t bits_len = len * 8;
 
-	memcpy(msg + new_len, &bits_len, 4);
+	// set the last 64 bits to the number of bits in the file (should be little-endian)
+	memcpy(msg + new_len, &bits_len, sizeof(bits_len));
 
 	// Process the message in successive 512-bit chunks:
 	//for each 512-bit chunk of message
