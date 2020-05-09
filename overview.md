@@ -134,12 +134,42 @@ otherwise keep going.
  - Break chunk into sixteen 32-bit words.
  - The rest goes according to this pseudocode
 ><img src="https://github.com/SlavLuk/MD5/blob/master/img/main.png">
- 
-
-
-
-
-
-
 ## Complexity
+Let's analyze MD5 algorithm:
+ 1. Declare constants.
+ 2. Divide the input in blocks of constant size to loop over n times.
+ 3. Memory copy and allocation.
+ 4. Process the message in successive 512-bit chunks.
+ 5. Operations on basic MD5 functions.
+In big-O notation stage 1 uses _O_(1).In stage 2 we divide the input in blocks and in worst-case
+iterate over only 447 times so the length of input has no significant effect on performence _O_(n/c).
+Memory copy and  allocation in stage 3 uses _O_(1) constatnt time.Processing the input in successive 
+512-bit chunks involves loop to be executed n times depending on the input length _O_(n).
+Analyzing operations on basic MD5 functions we see that _f_ has a bunch of operators in loops that run constant times _O_(1).
+By considering only the highest order term of the expression for the running time of the algorithm,
+disregarding both the coefficient of that term and any lower order terms, 
+thus the total time of MD5 on an input of length _n_ is _O_(1)+_O_(n/c)+_O_(1)+_O_(n)+_O_(1), or _O_(n).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## References

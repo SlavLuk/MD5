@@ -229,21 +229,16 @@ void md5(uint8_t *init_msg, size_t len)
 		0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
 		0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
 
-	// Pre-processing: adding a single 1 bit
-	//append "1" bit to message
+	//Initialize new length ,length in bits plus 1
+	int new_len = len * 8 + 1;
 
-	// Pre-processing: padding with zeros
-	//append "0" bit until message length in bit ≡ 448 (mod 512)
-	//append length mod (2 pow 64) to message
-	int new_len;
-
-	// if length of message more than in bit ≡ 448 (mod 512) allocate another block to accommodate "0" padding
-	for (new_len = len * 8 + 1; new_len % 512 != 448; new_len++)
+	// if length of message more than in bits ≡ 448 (mod 512) allocate another block to accommodate "0" padding
+	for (; new_len % 512 != 448; new_len++)
 		;
 	// length in bytes
 	new_len /= 8;
 
-	// allocate memory filled with zeros
+	// allocate memory filled with zeros in bytes
 	msg = calloc(new_len, sizeof(int));
 
 	//copy original msg into msg with zeros
@@ -253,7 +248,7 @@ void md5(uint8_t *init_msg, size_t len)
 	msg[len] = 0x80;
 
 	// length in bits
-	uint64_t bits_len = len * 8;
+	uint32_t bits_len = len * 8;
 
 	// set the last 64 bits to the number of bits in the file (should be little-endian)
 	memcpy(msg + new_len, &bits_len, sizeof(bits_len));
