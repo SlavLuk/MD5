@@ -86,7 +86,8 @@ For the project requirement i created test cases based on <a href="https://tools
 ## Algorithm
 
 The MD5 hashing algorithm is a one-way cryptographic function that accepts a message of any length as input and produces as output 
-a 128-bit "fingerprint" or "message digest" of the input.
+a 128-bit "fingerprint" or "message digest" of the input.One-way functions work in one direction, meaning that it is easy to compute the hash
+value from a given message and hard to compute a message that hashes to a given hash value.
 A robust one-way hash function is usually expected to satisfy some requirements, namely collision resistance, preimage resistance, second preimage resistance.
 The MD5 algorithm is intended for digital signature applications, where a large file must be "compressed" in a secure manner before being encrypted with a private (secret) key under a public-key cryptosystem such as RSA.
 MD5 consists of 64 operations, grouped into four rounds of 16 operations. The MD5 algorithm is designed to be quite fast on 32-bit machines. This algorithm found by Professor Ronald L. Rivest.
@@ -141,7 +142,8 @@ Let's analyze MD5 algorithm:
  3. Memory copy and allocation.
  4. Process the message in successive 512-bit chunks.
  5. Operations on basic MD5 functions.
-In big-O notation stage 1 uses _O_(1).In stage 2 we divide the input in blocks and in worst-case
+
+In big-_O_ notation stage 1 uses _O_(1).In stage 2 we divide the input in blocks and in worst-case
 iterate over only 447 times so the length of input has no significant effect on performence _O_(n/c).
 Memory copy and  allocation in stage 3 uses _O_(1) constatnt time.Processing the input in successive 
 512-bit chunks involves loop to be executed n times depending on the input length _O_(n).
@@ -150,6 +152,31 @@ By considering only the highest order term of the expression for the running tim
 disregarding both the coefficient of that term and any lower order terms, 
 thus the total time of MD5 on an input of length _n_ is _O_(1)+_O_(n/c)+_O_(1)+_O_(n)+_O_(1), or _O_(n).
 
+A robust one-way hash function is usually expected to satisfy some requirements, namely collision resistance, 
+preimage resistance, second preimage resistance.
+Therefore some security properties are required to make a hash function _H_ suitable for
+such cryptographic uses:
+ 1. Pre-image resistance: Given a hash value _h_ it should be hard to find any message _m_ such
+that _h_ = _H_(_m_).
+ 2. Second pre-image resistance: Given a message _m1_ it should be hard to find another message
+_m2_ != _m1_ such that _H_(_m1_) = _H_(_m2_).
+ 3. Collision resistance: It should be hard to find different messages _m1_, _m2_ such that _H_(_m1_) =
+_H_(_m2_).
+
+In cryptography, a pre-image attack on cryptographic hash functions tries to find a message that has a specific hash value. 
+A cryptographic hash function should resist attacks on its pre-image (set of possible inputs).
+ - Brute-force attack.
+Brute-force attacks are an application of brute-force search, 
+the general problem-solving technique of enumerating all candidates and checking each one.Brute-force attacks work by calculating 
+every possible combination that could make up a hash and testing it to see if it is the correct hash.
+For an _n_-bit hash, this attack has a time 
+complexity 2<sup>n</sup>, which is considered too high for a typical output size of _n_ = 128 bits. 
+Some significant pre-image attacks have already been discovered, but they are not yet practical.If a practical pre-image attack is 
+discovered, it would drastically affect many Internet protocols.
+ - Birthday attack.
+A birthday attack is a type of cryptographic attack that exploits the mathematics behind the birthday problem in probability theory.
+With a birthday attack, it is possible to find a collision of a hash function with time complexity in 2<sup>n/2</sup>, 
+with 2<sup>n</sup> being the classical pre-image resistance security.
 
 
 

@@ -269,29 +269,32 @@ void md5(uint8_t *init_msg, size_t len)
 
 		//Main loop
 		uint32_t i;
-		//operations on basic MD5 functions.
+
+		/* operations on the compression function
+		   each block consists of 64 steps
+		*/
 		for (i = 0; i < 64; i++)
 		{
 			uint32_t f, g;
 
-			if (i < 16)
+			if (i < 16) // first round
 			{
 				f = (b & c) | ((~b) & d);
 				g = i;
 			}
-			else if (i < 32)
+			else if (i < 32) // second round
 			{
 				f = (d & b) | ((~d) & c);
 				g = (5 * i + 1) % 16;
 			}
-			else if (i < 48)
+			else if (i < 48) // third round
 			{
 				f = b ^ c ^ d;
 				g = (3 * i + 5) % 16;
 			}
 			else
 			{
-				f = c ^ (b | (~d));
+				f = c ^ (b | (~d)); // forth round
 				g = (7 * i) % 16;
 			}
 
