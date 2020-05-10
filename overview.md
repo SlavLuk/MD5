@@ -163,9 +163,11 @@ _m2_ != _m1_ such that _H_(_m1_) = _H_(_m2_).
  3. Collision resistance: It should be hard to find different messages _m1_, _m2_ such that _H_(_m1_) =
 _H_(_m2_).
 
+
+#### Pre-image resistance.
 In cryptography, a pre-image attack on cryptographic hash functions tries to find a message that has a specific hash value. 
 A cryptographic hash function should resist attacks on its pre-image (set of possible inputs).
-#### Brute-force attack.
+ - Brute-force attack.
 Brute-force attacks are an application of brute-force search, 
 the general problem-solving technique of enumerating all candidates and checking each one.Brute-force attacks work by calculating 
 every possible combination that could make up a hash and testing it to see if it is the correct hash.
@@ -173,10 +175,20 @@ For an _n_-bit hash, this attack has a time
 complexity 2<sup>n</sup>, which is considered too high for a typical output size of _n_ = 128 bits. 
 Some significant pre-image attacks have already been discovered, but they are not yet practical.If a practical pre-image attack is 
 discovered, it would drastically affect many Internet protocols.
-#### Birthday attack.
+#### Second pre-image resistance and collision resistance.
+ - Birthday attack.
 A birthday attack is a type of cryptographic attack that exploits the mathematics behind the birthday problem in probability theory.
 With a birthday attack, it is possible to find a collision of a hash function with time complexity in 2<sup>n/2</sup>, 
 with 2<sup>n</sup> being the classical pre-image resistance security.
+ -  Collision attack.
+A hash collision is a pair of different messages _m1_ != _m2_ having the same hash value _H_(_m1_) =
+_H_(_m2_). Therefore second pre-image resistance and collision resistance are also known as weak and
+strong collision resistance, respectively.
+All currently known practical or almost-practical attacks on MD5 and SHA-1 are collision attacks. In general, 
+a collision attack is easier to mount than a pre-image attack, as it is not restricted by any set value (any two values can be used to collide).
+Mathematically stated, a collision attack finds two different messages _m1_ and _m2_, such that _hash_(_m1_) = _hash_(_m2_). In a classical collision attack, the 
+attacker has no control over the content of either message, but they are arbitrarily chosen by the algorithm.
+The time complexity of the collision attack, in contrast, is 2<sup>n/2</sup>.
 
 
 
