@@ -165,7 +165,7 @@ _H_(_m2_).
 
 In cryptography, a pre-image attack on cryptographic hash functions tries to find a message that has a specific hash value. 
 A cryptographic hash function should resist attacks on its pre-image (set of possible inputs).
- - Brute-force attack.
+#### Brute-force attack.
 Brute-force attacks are an application of brute-force search, 
 the general problem-solving technique of enumerating all candidates and checking each one.Brute-force attacks work by calculating 
 every possible combination that could make up a hash and testing it to see if it is the correct hash.
@@ -173,7 +173,7 @@ For an _n_-bit hash, this attack has a time
 complexity 2<sup>n</sup>, which is considered too high for a typical output size of _n_ = 128 bits. 
 Some significant pre-image attacks have already been discovered, but they are not yet practical.If a practical pre-image attack is 
 discovered, it would drastically affect many Internet protocols.
- - Birthday attack.
+#### Birthday attack.
 A birthday attack is a type of cryptographic attack that exploits the mathematics behind the birthday problem in probability theory.
 With a birthday attack, it is possible to find a collision of a hash function with time complexity in 2<sup>n/2</sup>, 
 with 2<sup>n</sup> being the classical pre-image resistance security.
