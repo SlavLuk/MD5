@@ -213,3 +213,5 @@ Used this work for studing of a different collisions on MD5.
 Read about a pre-image attack on MD5.
  - <a href="https://cryptography.hyperlink.cz/MD5_collisions.html">Tunnels in Hash Functions: MD5 Collisions Within a Minute</a>
 Used this work for studing of a different collisions on MD5.
+ - <a href="http://fuuu.be/polytech/INFOF408/Introduction-To-The-Theory-Of-Computation-Michael-Sipser.pdf">Introduction to the theory of computation</a>
+Studied algorithm complexity and Big O notation.
