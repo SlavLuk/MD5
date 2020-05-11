@@ -211,5 +211,5 @@ Helped me understand dynamic memory in C , especially for copying and allocating
 Used this work for studing of a different collisions on MD5.
  - <a href="https://en.wikipedia.org/wiki/Preimage_attack">Pre-image attack</a>
 Read about a pre-image attack on MD5.
-
  - <a href="https://cryptography.hyperlink.cz/MD5_collisions.html">Tunnels in Hash Functions: MD5 Collisions Within a Minute</a>
+Used this work for studing of a different collisions on MD5.
