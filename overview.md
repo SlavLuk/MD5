@@ -187,25 +187,29 @@ Mathematically stated, a collision attack finds two different messages _m1_ and 
 attacker has no control over the content of either message, but they are arbitrarily chosen by the algorithm.
 The time complexity of the collision attack, in contrast, is 2<sup>n/2</sup>.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## References
+
+ - <a href="https://tools.ietf.org/pdf/rfc1321.pdf">RFC 1321 MD5 Message-Digest Algorithm</a>
+I used this reference to study the MD5 Message-Digest Algorithm and used test cases for my code.
+ - <a href="https://en.wikipedia.org/wiki/MD5">MD5 Pseudocode from Wikipedia</a>
+I refered to the pseodocode to implement my MD5 algorithm.
+ - <a href="https://en.cppreference.com/w/c/language">C - Programming Language</a>
+The main source for C programming language if you get a bit rusty.
+ - <a href="https://stackoverflow.com/questions/1552749/difference-between-cr-lf-lf-and-cr-line-break-types">Difference between CR LF, LF and CR</a>
+When i got stuck with the wrong hashes produced on different OS. 
+ - <a href="https://en.wikipedia.org/wiki/Newline">New line in different OS</a>
+A study on new line for different OS.
+ - <a href="https://sourceforge.net/projects/mingw/">A native Windows port of the GNU Compiler Collection</a>
+Downloaded a C compiler for Windows.
+ - <a href="https://www.codeproject.com/Articles/157001/Full-getopt-Port-for-Unicode-and-Multibyte-Microso">Windows version of getopt() function</a>
+Used this source code for getopt function to implement command line arguments functionality.
+ - <a href="https://stackoverflow.com/questions/298510/how-to-get-the-current-directory-in-a-c-program">Windows current directory</a>
+One of the option in my menu.
+ - <a href="https://www.design-reuse.com/articles/25090/dynamic-memory-allocation-fragmentation-c.html">Dynamic memory allocation and fragmentation in C and C++</a>
+Helped me understand dynamic memory in C , especially for copying and allocating memory dynamically.
+ - <a href="https://www.win.tue.nl/hashclash/On%20Collisions%20for%20MD5%20-%20M.M.J.%20Stevens.pdf">Master's thesis on collisions for MD5</a>
+Used this work for studing of a different collisions on MD5.
+ - <a href="https://en.wikipedia.org/wiki/Preimage_attack">Pre-image attack</a>
+Read about a pre-image attack on MD5.
+
+ - <a href="https://cryptography.hyperlink.cz/MD5_collisions.html">Tunnels in Hash Functions: MD5 Collisions Within a Minute</a>
